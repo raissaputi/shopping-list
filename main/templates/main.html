@@ -1,10 +1,32 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h1>Shopping List Page</h1>
+    <nav class="navbar bg-body-tertiary">
+        <div class="d-flex justify-content-between">
+            <div class="container-fluid">
+                <span class="navbar-brand">{{name}}</span>
+            </div>
+            
+            <div class="container-fluid">
+                <div class="mx-auto p-2" style="width: 200px;">
+                    <span class="navbar-brand mb-0 h1">Shopping List</span>
+                </div>
+            </div>
+    
+            <form class="container-fluid justify-content-start">
+                <a href="{% url 'main:logout' %}">
+                    <button class="btn btn-outline-success me-2" type="button">Logout</button>
+                </a>
+            </form>
+        </div>
+    </nav>
+  
+
+
+    <!-- <h1>Shopping List Page</h1>
 
     <h5>Name:</h5>
-    <p>{{name}}</p>
+    <p>{{name}}</p> -->
 
     <h5>Class:</h5>
     <p>{{class}}</p>
@@ -25,6 +47,18 @@
                 <td>{{product.price}}</td>
                 <td>{{product.description}}</td>
                 <td>{{product.date_added}}</td>
+                <td>
+                    <a href="{% url 'main:edit_product' product.pk %}">
+                        <button>
+                            Edit
+                        </button>
+                    </a>
+                    <a href="{% url 'main:delete_product' product.pk %}">
+                        <button>
+                            Delete
+                        </button>
+                    </a>
+                </td>
             </tr>
         {% endfor %}
     </table>
@@ -41,10 +75,10 @@
 
     <h5>Sesi terakhir login: {{ last_login }}</h5>
 
-    <a href="{% url 'main:logout' %}">
+    <!-- <a href="{% url 'main:logout' %}">
         <button>
             Logout
         </button>
-    </a>
+    </a> -->
 
 {% endblock content %}
