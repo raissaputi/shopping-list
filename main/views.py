@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, JsonResponse
 from main.forms import ProductForm
 from django.urls import reverse
 from main.models import Product
@@ -18,6 +18,7 @@ from django.http import HttpResponseRedirect
 from django.urls import reverse
 
 from django.views.decorators.csrf import csrf_exempt
+import json
 
 @login_required(login_url='/login')
 def show_main(request):
